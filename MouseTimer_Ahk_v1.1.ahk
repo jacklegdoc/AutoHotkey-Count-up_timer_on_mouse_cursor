@@ -1,31 +1,18 @@
+; Include this script in auto-execution of main AutoHotkey file.
+global RunMouseTimer := False
+
 MouseTimer()
 {
-	If !IsSet(RunMouseTimer)
-	{
+	If !IsSet(RunMouseTimer) {
 		RunMouseTimer = True
-		ShowMouseTimer()
-		If IsSet(ActiveTitle) {
-			WinActivate, %ActiveTitle%
-		}
-		Return
-	}
-	If (RunMouseTimer = True)
-	{
+	} Else If (RunMouseTimer = True) {
 		RunMouseTimer := False
-		ShowMouseTimer()
-		If IsSet(ActiveTitle) {
-			WinActivate, %ActiveTitle%
-		}
-		Return
-	}
-	If (RunMouseTimer = False)
-	{
+	} Else If (RunMouseTimer = False) {
 		RunMouseTimer := True
-		ShowMouseTimer()
-		If IsSet(ActiveTitle) {
-			WinActivate, %ActiveTitle%
-		}
-		Return
+	}
+	ShowMouseTimer()
+	If IsSet(ActiveTitle) {
+		WinActivate, %ActiveTitle%
 	}
 	Return
 }
@@ -41,7 +28,6 @@ ShowMouseTimer()
 			If WinExist(MouesTimerRunning) {
 				WinClose, MouesTimerRunning
 			}
-			Break
 		}
 		Sleep, 950
 		If WinExist(MouseTimerRunning) {
@@ -54,7 +40,7 @@ ShowMouseTimer()
 		PosX := PosX + 20
 		PosY := PosY - 5
 		Progress, 10: B W100 X%PosX% Y%PosY% C11 ZH0 CT00EE00 CW000000 FM10 FS10, %Min%:%Sec%, , MouseTimerRunning, Meiryo UI
-		WinSet, Transparent, 191, MouseTimerRunning
+		WinSet, Transparent, 127, MouseTimerRunning
 		If (RunMouseTimer = False)
 		{
 			Progress, 10: Off
