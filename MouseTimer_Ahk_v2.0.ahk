@@ -2,26 +2,16 @@ MouseTimer()
 {
 	If !IsSet(RunMouseTimer) {
 		global RunMouseTimer := True
-		ShowMouseTimer()
-		If IsSet(ActiveTitle) {
-			WinActivate ActiveTitle
-		}
-		Return
 	} Else If (RunMouseTimer = True) {
 		RunMouseTimer := False
-		ShowMouseTimer()
-		If IsSet(ActiveTitle) {
-			WinActivate ActiveTitle
-		}
-		Return
 	} Else If (RunMouseTimer = False) {
 		RunMouseTimer := True
-		ShowMouseTimer()
-		If IsSet(ActiveTitle) {
-			WinActivate ActiveTitle
-		}
-		Return
 	}
+	ShowMouseTimer()
+	If IsSet(ActiveTitle) {
+		WinActivate ActiveTitle
+	}
+	Return
 }
 
 ShowMouseTimer()
